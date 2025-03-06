@@ -9,7 +9,36 @@ Part of the Player Project (http://playerstage.org)
 
 ![Build Status](https://github.com/sousarbarb/Stage/actions/workflows/ci.yml/badge.svg)
 
-# License
+## Setup
+See [INSTALL.txt](INSTALL.txt) for further instructions on the different
+Operating Systems (OS).
+
+```sh
+sudo apt-get update
+sudo apt-get dist-upgrade -y
+sudo apt-get install -y git build-essential cmake
+# ( if you do not want interactive mode, execute the following
+#   before installing the other dependencies... )
+# DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends tzdata
+sudo apt-get install -y libjpeg-dev libpng-dev libltdl-dev libfltk1.3-dev libglew-dev
+
+mkdir ~/dev -p
+cd ~/dev
+git clone https://github.com/sousarbarb/Stage.git
+
+cd Stage
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/stage ..
+make
+make install
+
+export LD_LIBRARY_PATH=/opt/stage/lib:$LD_LIBRARY_PATH
+
+cd /opt/stage/bin/
+./stage ../share/stage/worlds/simple.world
+```
+
+## License
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as
 published by the Free Software Foundation.
@@ -24,7 +53,7 @@ A copy of the license is included with the sourcecode in the file
 terms of the license.
 
 
-# Introduction
+## Introduction
 Stage is a robot simulator. It provides a virtual world populated by
 mobile robots and sensors, along with various objects for the robots
 to sense and manipulate.
@@ -40,14 +69,14 @@ easy to create, run and customize a Stage simulation from inside your
 own programs.
 
 
-# Models
+## Models
 Stage provides several sensor and actuator models, including sonar
 or infrared rangers, scanning laser rangefinder, color-blob tracking,
 fiducial tracking, bumpers, grippers and mobile robot bases with
 odometric or global localization.
 
 
-# Design
+## Design
 Stage was designed with multi-agent systems in mind, so it provides
 fairly simple, computationally cheap models of lots of devices rather
 than attempting to emulate any device with great fidelity. This design
@@ -66,7 +95,7 @@ you to rapidly build powerful robot controllers. These are easy to use
 with Stage.
 
 
-# Citations
+## Citations
 If you use Stage in your work, we'd appreciate a citation. At the time of writing, the most suitable reference is either:
 - Richard Vaughan. "Massively Multiple Robot Simulations in Stage", Swarm Intelligence 2(2-4):189-208, 2008. Springer, [download PDF](http://autonomylab.org/doc/vaughan_si08.pdf)
 
@@ -82,7 +111,7 @@ used to create your own custom simulator, it's called "libstage" or
 "the Stage library". When Player is used with its 3D ODE-based
 simulation backend, Gazebo, it's called Player/Gazebo. Gazebo without Player is just "Gazebo". All this software is part of the "Player Project".
 
-# Support
+## Support
 Funding for Stage has been provided in part by:
 
 - DARPA (USA)
