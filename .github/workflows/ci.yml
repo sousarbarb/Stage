@@ -15,11 +15,11 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          apt-get update
-          apt-get dist-upgrade -y
-          apt-get install -y git build-essential cmake
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-          apt-get install -y libjpeg-dev libpng-dev libltdl-dev libfltk1.3-dev libglew-dev
+          sudo apt-get update
+          sudo apt-get dist-upgrade -y
+          sudo apt-get install -y git build-essential cmake
+          DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends tzdata
+          sudo apt-get install -y libjpeg-dev libpng-dev libltdl-dev libfltk1.3-dev libglew-dev
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Configure and build
