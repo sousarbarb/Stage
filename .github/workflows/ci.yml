@@ -1,0 +1,29 @@
+name: Stage Simulator CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04 , ubuntu-22.04 , ubuntu-24.04 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install dependencies
+        run: |
+          apt update
+          apt dist-upgrade -y
+          apt install -y git build-essential cmake
+          DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends tzdata
+          apt install -y libjpeg-dev libpng-dev libltdl-dev libfltk1.3-dev libglew-dev
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure and build
+        run: |
+          mkdir build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make -j$(nproc)
