@@ -7,7 +7,7 @@ For installation notes see INSTALL.txt
 Copyright Richard Vaughan and contributors 1998-2011
 Part of the Player Project (http://playerstage.org)
 
-[![Build Status](https://travis-ci.org/CodeFinder2/Stage.svg?branch=master)](https://travis-ci.org/CodeFinder2/Stage)
+![Build Status](https://github.com/sousarbarb/Stage/actions/workflows/ci.yml/badge.svg)
 
 # License
 This program is free software; you can redistribute it and/or modify
@@ -96,7 +96,7 @@ Names
 -----
 The names "Player" and "Stage" were inspired by the lines:
 
-  > All the world's a stage,  
+  > All the world's a stage,
   > And all the men and women merely players
 
 from "As You Like It" by William Shakespeare.
