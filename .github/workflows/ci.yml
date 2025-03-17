@@ -28,3 +28,4 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/stage ..
           make -j$(nproc)
           sudo make install
+          sudo ldconfig --verbose /opt/stage/lib/

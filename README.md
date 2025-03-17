@@ -29,10 +29,9 @@ git clone https://github.com/sousarbarb/Stage.git
 cd Stage
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/stage ..
-make
-make install
-
-export LD_LIBRARY_PATH=/opt/stage/lib:$LD_LIBRARY_PATH
+make -j$(nproc)
+sudo make install
+sudo ldconfig --verbose /opt/stage/lib/
 
 cd /opt/stage/bin/
 ./stage ../share/stage/worlds/simple.world
